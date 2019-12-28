@@ -2,19 +2,28 @@
 
 using namespace std;
 
+class MoneyBox
+{
+    int total;
+public:
+    MoneyBox(int _init = 0) : total(_init) {
+        cout << "init" << endl;
+     }
+    int operator()(int money)
+    {
+        cout << "op" << endl;
+        total += money;
+        return total;
+    }
+};
+ 
 int main()
 {
-    string s1 = "Hello", s2;
-    char *s3 = "Hello";
-    int i = 0;
-    while(s1[i])
-    {
-        cout << s1[i] << endl;
-        i++;
-    }
-    cout << s1[6] << endl;
-    s2 = s1.c_str();
-    cout << s2.size() << endl;
-    //cout << s3.size() << endl;
+    MoneyBox mb; // 함수 객체
+ 
+    cout << "mb(100): " << mb(100) << endl;
+    cout << "mb(500): " << mb(500) << endl;
+    cout << "mb(2000): " << mb(2000) << endl;
     return 0;
 }
+
